@@ -1,0 +1,53 @@
+$size: 75px;
+$num: 9;
+
+body {
+    background: #717edd;
+    max-width: $size * 12;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.n {
+    animation: nausea 2s infinite ease-in-out;
+    background: #7834af;
+    border-radius: 50%;
+    box-sizing: border-box;
+    float: left;
+    margin: $size/8;
+    padding: $size/4;
+    width: $size;
+    height: $size;
+}
+
+@for $n from 1 through $num*$num {
+    .n:nth-child(#{$n}) {
+        animation-delay: $n * -0.4s;
+    }
+}
+
+.n:nth-child(odd) {
+    background: #70c892;
+
+    .o {
+        animation-delay: -0.4s;
+        background: #7834af;
+    }
+}
+
+.o {
+    animation: scale 2s infinite ease-in-out;
+    animation-delay: -1s;
+    background: #73d8b7;
+    border-radius: 50%;
+    width: $size/2;
+    height: $size/2;
+}
+
+@keyframes nausea {
+    50% { background: #d65173; transform: rotate(45deg) scale(0.5); }
+}
+
+@keyframes scale {
+    50% { background: #f2df79; transform: scale(0.2); }
+}
